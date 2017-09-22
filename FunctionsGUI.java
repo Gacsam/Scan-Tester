@@ -64,12 +64,12 @@ public class FunctionsGUI extends JFrame {
 		list.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		list.setVisible(false);
 		RandomizeItems();
-		JButton btnDisplay = new JButton("Display");
+		JButton btnDisplay = new JButton("Reveal");
 		btnDisplay.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(list.isVisible()){
-					btnDisplay.setText("Display");
+					btnDisplay.setText("Reveal");
 					lblNewLabel.setText("Scan now");
 					list.setVisible(false);
 				DissipateConstructs();
@@ -118,7 +118,7 @@ public class FunctionsGUI extends JFrame {
 	private void RandomizeItems(){
 		ArrayList<String> functions = new ArrayList<String>(Arrays.asList
 				("Generate energy", "Bounce energy back", "Pulse with energy", "Absorb energy", "Store energy", "Deflect energy",
-						"Scan for malicious intent", "Compress energy", "Clean energy", "Play Rick Astley's Never Gonna Give You Up through telepathy"));
+						"Scan for malicious intent", "Compress energy", "Clean energy", "Cloak", "Mimic energy", "Randomly convert energy"));
 		StringBuilder result = new StringBuilder();
 
 		// Randomise the functions
@@ -126,17 +126,7 @@ public class FunctionsGUI extends JFrame {
 		for(int i=0; i < functionAmount; i++) {
 			if(rand.nextInt(100) < 95) {
 			randomised = (rand.nextInt(functions.size()));
-			outerloop:
-			if(functions.get(randomised).contains("Rick Astley")) {
-				// Lower chances by 10 times
-					if(rand.nextInt(100) == 0)
-						model.addElement("SECRET");
-					else {
-						randomised = (rand.nextInt(functions.size()-1));
-						model.addElement(functions.get(randomised));
-						break outerloop;
-				}
-			}else model.addElement(functions.get(randomised));
+			model.addElement(functions.get(randomised));
 			result.append(functions.get(randomised));
 			functions.remove(randomised);
 		}else model.addElement("EMPTY");

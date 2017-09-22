@@ -1,5 +1,4 @@
 import java.awt.EventQueue;
-import javax.jnlp.*;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -42,7 +41,7 @@ public class ConstructInstructionGUI extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		JLabel lblConstructCreatorV = new JLabel("Construct Creator v1.01r");
+		JLabel lblConstructCreatorV = new JLabel("Scan-Tester v1.02r");
 		lblConstructCreatorV.setBounds(5, 5, 422, 19);
 		lblConstructCreatorV.setHorizontalAlignment(SwingConstants.CENTER);
 		lblConstructCreatorV.setFont(new Font("Tahoma", Font.PLAIN, 15));

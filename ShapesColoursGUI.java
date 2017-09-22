@@ -82,12 +82,12 @@ public class ShapesColoursGUI extends JFrame {
 		textField_1.setVisible(false);
 		panel.add(textField_1);
 		RandomizeItems();
-		JButton btnDisplay = new JButton("Display");
+		JButton btnDisplay = new JButton("Reveal");
 		btnDisplay.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(textField.isVisible()){
-					btnDisplay.setText("Display");
+					btnDisplay.setText("Reveal");
 					lblNewLabel.setText("Scan now");
 					textField.setVisible(false);
 					textField_1.setVisible(false);
