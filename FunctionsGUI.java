@@ -118,7 +118,7 @@ public class FunctionsGUI extends JFrame {
 	private void RandomizeItems(){
 		ArrayList<String> functions = new ArrayList<String>(Arrays.asList
 				("Generate energy", "Bounce energy back", "Pulse with energy", "Absorb energy", "Store energy", "Deflect energy",
-						"Scan for malicious intent", "Compress energy", "Clean energy", "Cloak", "Mimic energy", "Randomly convert energy"));
+						"Scan for malicious intent", "Compress energy", "Clean energy", "Cloak", "Mimic energy", "Randomly convert energy", "Transfer mild poison over link, administer antidote after 30 seconds"));
 		StringBuilder result = new StringBuilder();
 
 		// Randomise the functions
