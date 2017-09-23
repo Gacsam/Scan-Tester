@@ -41,14 +41,14 @@ public class ConstructInstructionGUI extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		JLabel lblConstructCreatorV = new JLabel("Scan-Tester v1.02r");
+		JLabel lblConstructCreatorV = new JLabel("Scan-Tester v1.1");
 		lblConstructCreatorV.setBounds(5, 5, 422, 19);
 		lblConstructCreatorV.setHorizontalAlignment(SwingConstants.CENTER);
 		lblConstructCreatorV.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		contentPane.add(lblConstructCreatorV);
 		
 		JLabel lblhelloAndWelcome = new JLabel("<html>Hello and welcome to Scan-Tester by Gacsam<br><br>"
-				+ "The current version contains 10 colours, 10 shapes and 10 functions.<br><br>"
+				+ "The current version contains 10 colours, 10 shapes and 13 functions.<br><br>"
 				+ "The Scan-Tester works by randomising those attributes and creating a construct from them.<br>"
 				+ "Choose one of the options and begin.</html>");
 		lblhelloAndWelcome.setBounds(5, 24, 422, 200);
@@ -62,24 +62,24 @@ public class ConstructInstructionGUI extends JFrame {
 		lblFunctions.setBounds(300, 185, 75, 25);
 		contentPane.add(lblFunctions);
 		
-		JComboBox comboBox = new JComboBox(levels);
-		comboBox.setBounds(370, 185, 50, 25);
-		contentPane.add(comboBox);
+		JComboBox functionAmount = new JComboBox(levels);
+		functionAmount.setBounds(370, 185, 50, 25);
+		contentPane.add(functionAmount);
 		
 		
-		JButton btnBegin = new JButton("Functions");
-		btnBegin.setBounds(230, 225, 180, 25);
-		btnBegin.addMouseListener(new MouseAdapter() {
+		JButton btnFunctions = new JButton("Functions");
+		btnFunctions.setBounds(230, 225, 180, 25);
+		btnFunctions.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				int index = comboBox.getSelectedIndex();
+				int index = functionAmount.getSelectedIndex();
 				FunctionsGUI newConstructCreator = new FunctionsGUI(index);
 				newConstructCreator.setVisible(true);
 				dispose();
 			}
 		});
 		contentPane.setLayout(null);
-		contentPane.add(btnBegin);
+		contentPane.add(btnFunctions);
 		
 		JButton btnShapesAndColours = new JButton("Shapes and Colours");
 		btnShapesAndColours.setBounds(20, 225, 170, 25);

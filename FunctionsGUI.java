@@ -15,6 +15,7 @@ import javax.swing.JList;
 import javax.swing.SwingConstants;
 import javax.swing.JScrollPane;
 import java.awt.Font;
+import javax.swing.JTextField;
 
 @SuppressWarnings("serial")
 public class FunctionsGUI extends JFrame {
@@ -29,6 +30,8 @@ public class FunctionsGUI extends JFrame {
 	private Random rand = new Random();
 	// Randomise once, as the 1st random is always the same
 	private int randomised = (rand.nextInt(3));
+	private JTextField txtLocation;
+	private String location;
 
 	/**
 	 * Launch the application.
@@ -58,9 +61,9 @@ public class FunctionsGUI extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Scan now");
-		lblNewLabel.setBounds(80, 135, 131, 25);
-		contentPane.add(lblNewLabel);
+		JLabel lblScanCompare = new JLabel("Scan now");
+		lblScanCompare.setBounds(80, 135, 131, 25);
+		contentPane.add(lblScanCompare);
 		list.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		list.setVisible(false);
 		RandomizeItems();
@@ -70,39 +73,41 @@ public class FunctionsGUI extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				if(list.isVisible()){
 					btnDisplay.setText("Reveal");
-					lblNewLabel.setText("Scan now");
+					lblScanCompare.setText("Scan now");
+					txtLocation.setText("Location");
 					list.setVisible(false);
 				DissipateConstructs();
 				RandomizeItems();
 				}
 				else{
 					btnDisplay.setText("Hide");
-					lblNewLabel.setText("Test results");
+					lblScanCompare.setText("Compare results");
+					txtLocation.setText(location);
 					list.setVisible(true);
 				}
 			}
 		});
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(5, 5, 384, 117);
-		contentPane.add(panel_1);
-		panel_1.setLayout(null);
+		JPanel functionPanel = new JPanel();
+		functionPanel.setBounds(5, 5, 384, 117);
+		contentPane.add(functionPanel);
+		functionPanel.setLayout(null);
 		
 		JLabel lblFunctions = new JLabel("Function(s)");
 		lblFunctions.setHorizontalAlignment(SwingConstants.CENTER);
 		lblFunctions.setBounds(12, 5, 360, 16);
-		panel_1.add(lblFunctions);
+		functionPanel.add(lblFunctions);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(12, 24, 345, 93);
-		panel_1.add(scrollPane);
+		functionPanel.add(scrollPane);
 		
 		scrollPane.setViewportView(list);
-		btnDisplay.setBounds(170, 135, 97, 25);
+		btnDisplay.setBounds(150, 135, 97, 25);
 		contentPane.add(btnDisplay);
 		
-		BasicArrowButton basicArrowButton = new BasicArrowButton(7);
-		basicArrowButton.addMouseListener(new MouseAdapter() {
+		BasicArrowButton btnArrowBack = new BasicArrowButton(7);
+		btnArrowBack.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				ConstructInstructionGUI newMainMenu = new ConstructInstructionGUI();
@@ -110,8 +115,14 @@ public class FunctionsGUI extends JFrame {
 				dispose();
 			}
 		});
-		basicArrowButton.setBounds(15, 135, 30, 30);
-		contentPane.add(basicArrowButton);
+		btnArrowBack.setBounds(15, 135, 30, 30);
+		contentPane.add(btnArrowBack);
+		
+		txtLocation = new JTextField();
+		txtLocation.setText("Location");
+		txtLocation.setBounds(279, 138, 91, 22);
+		contentPane.add(txtLocation);
+		txtLocation.setColumns(10);
 		
 	}
 	
@@ -119,6 +130,8 @@ public class FunctionsGUI extends JFrame {
 		ArrayList<String> functions = new ArrayList<String>(Arrays.asList
 				("Generate energy", "Bounce energy back", "Pulse with energy", "Absorb energy", "Store energy", "Deflect energy",
 						"Scan for malicious intent", "Compress energy", "Clean energy", "Cloak", "Mimic energy", "Randomly convert energy", "Transfer mild poison over link, administer antidote after 30 seconds"));
+		ArrayList<String> locations = new ArrayList<String>(Arrays.asList("Above", "Front", "Left", "Right", "Behind"));
+		System.out.println(functions.size());
 		StringBuilder result = new StringBuilder();
 
 		// Randomise the functions
@@ -131,6 +144,8 @@ public class FunctionsGUI extends JFrame {
 			functions.remove(randomised);
 		}else model.addElement("EMPTY");
 		}
+		location = locations.get(rand.nextInt(locations.size()));
+		result.append(location);
 		ForgeTheConstruct(result.toString());
 	}
 	
